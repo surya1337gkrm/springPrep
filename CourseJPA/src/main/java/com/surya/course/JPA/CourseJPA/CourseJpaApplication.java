@@ -1,11 +1,13 @@
-package com.example.springJDBC.demo;
+package com.surya.course.JPA.CourseJPA;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class CourseJpaApplication {
+
 	public static void main(String[] args) {
-			SpringApplication.run(DemoApplication.class, args);
-		}
+		SpringApplication.run(CourseJpaApplication.class, args);
+	}
+
 }
