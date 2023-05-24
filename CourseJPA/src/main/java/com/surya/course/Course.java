@@ -1,4 +1,4 @@
-package com.surya.course.JPA.CourseJPA;
+package com.surya.course;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

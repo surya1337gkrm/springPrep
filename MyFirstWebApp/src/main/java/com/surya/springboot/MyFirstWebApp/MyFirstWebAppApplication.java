@@ -1,13 +1,13 @@
-package com.surya.course.JPA.CourseJPA;
+package com.surya.springboot.MyFirstWebApp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CourseJpaApplication {
+public class MyFirstWebAppApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CourseJpaApplication.class, args);
+		SpringApplication.run(MyFirstWebAppApplication.class, args);
 	}
 
 }
