@@ -18,4 +18,12 @@ public class HelloWorldController {
     public HelloWorldBean helloWorld(@PathVariable String name){
         return new HelloWorldBean(String.format("Hello, %s",name));
     }
+
+    @GetMapping("/hello")
+    public HelloWorldBean helloWorldParams(@RequestParam(required = false) String name){
+        if(name!=null){
+            return new HelloWorldBean(String.format("Hello, %s",name));
+        }
+        return new HelloWorldBean("Hello.");
+    }
 }
