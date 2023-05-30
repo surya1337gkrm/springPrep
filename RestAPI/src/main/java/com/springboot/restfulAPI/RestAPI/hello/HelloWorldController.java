@@ -19,6 +19,12 @@ public class HelloWorldController {
         return new HelloWorldBean(String.format("Hello, %s",name));
     }
 
+    //use this endpoint to check if user is loggedin.
+    @GetMapping("/basicauth")
+    public String basicAuth(){
+        return "Success";
+    }
+
     @GetMapping("/hello")
     public HelloWorldBean helloWorldParams(@RequestParam(required = false) String name){
         if(name!=null){

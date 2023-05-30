@@ -38,7 +38,7 @@ public class UserJPAController {
 
     @PostMapping("/jpa/users")
     public ResponseEntity<User> addUser(@Valid @RequestBody User user){
-//        System.out.println(user);
+        System.out.println(user);
         User userCreated=userRepository.save(user);
         //here location is a header that will be added to the response. It is optional. We can pass null in the place of location
         URI location= ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(userCreated.getId()).toUri();
@@ -49,7 +49,6 @@ public class UserJPAController {
     public void deleteUser(@PathVariable int id){
         userRepository.deleteById(id);
     }
-
     @GetMapping("/jpa/users/{id}/posts")
     public List<Post> getPostsByUserId(@PathVariable int id){
         Optional<User> user=userRepository.findById(id);
@@ -72,4 +71,25 @@ public class UserJPAController {
         return ResponseEntity.created(null).build();
     }
 
+    @PutMapping("/jpa/users/{id}/posts/{postid}")
+    public Post updatePost(@PathVariable int id,@PathVariable int postid,@RequestBody Post post){
+
+        Optional<User> user=userRepository.findById(id);
+        if(user.isEmpty()){
+            throw new UserNotFoundException(String.format("User with ID: %s is not found.",id));
+        }
+        post.setUser(user.get());
+        post.setId(postid);
+        return postRepository.save(post);
+    }
+
+    @DeleteMapping("/jpa/users/{id}/posts/{postid}")
+    public ResponseEntity<Post> deletePost(@PathVariable int id,@PathVariable int postid){
+        Optional<User> user=userRepository.findById(id);
+        if(user.isEmpty()){
+            throw new UserNotFoundException(String.format("User with ID: %s is not found.",id));
+        }
+        postRepository.deleteById(postid);
+        return ResponseEntity.noContent().build();
+    }
 }
