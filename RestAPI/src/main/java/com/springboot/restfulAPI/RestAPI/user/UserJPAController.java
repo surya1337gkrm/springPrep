@@ -83,6 +83,10 @@ public class UserJPAController {
         return postRepository.save(post);
     }
 
+    //We can add locally configure cors as follows
+//    @CrossOrigin -> Allows from all origins
+//            @CrossOrigin(origins = "http://localhostL1234") -> allows from specific origin
+
     @DeleteMapping("/jpa/users/{id}/posts/{postid}")
     public ResponseEntity<Post> deletePost(@PathVariable int id,@PathVariable int postid){
         Optional<User> user=userRepository.findById(id);
